@@ -42,7 +42,7 @@
     radial-gradient(ellipse at 50% 30%, rgba(255,255,255,0.5) 0%, transparent 55%),
     linear-gradient(165deg, #eceae7 0%, #dedcd9 50%, #e9e8e6 100%);
 
-  --fabric-bg: url("../images/background.jpg");
+  --fabric-bg: url("../images/background-wedding.png");
   --site-bg: var(--fabric-bg);
 
   --font-display: 'Cinzel Decorative', serif;
