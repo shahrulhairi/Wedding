@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="You're invited to the wedding of Shahrul & Ain">
+  <meta property="og:title" content="Shahrul & Ain | Wedding Reception">
+  <meta property="og:description" content="Tap to view your invitation">
+  <meta name="theme-color" content="#e8e6e3">
+  <meta name="color-scheme" content="light">
+  <title>Ceremony | Shahrul & Ain</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💍</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Entry Gate -->
+  <div id="gate" class="gate">
+    <div class="gate-inner">
+      <div class="gate-brand">
+        <p class="gate-verse">And We Created You In Pairs</p>
+        <p class="gate-surah">Surah An-Naba 78:8</p>
+      </div>
+      <p class="gate-label">The Wedding Of</p>
+      <h1 class="gate-couple">
+        <span>Shahrul</span>
+        <span class="amp">&</span>
+        <span>Ain</span>
+      </h1>
+      <div class="gate-divider"></div>
+      <p class="gate-prompt">Enter Access Code</p>
+      <div class="gate-code-display" id="gateCodeDisplay">
+        <span class="gate-dot"></span>
+        <span class="gate-dot"></span>
+        <span class="gate-dot"></span>
+        <span class="gate-dot"></span>
+      </div>
+      <div class="gate-keypad" id="gateKeypad">
+        <button type="button" data-key="1">1</button>
+        <button type="button" data-key="2">2</button>
+        <button type="button" data-key="3">3</button>
+        <button type="button" data-key="4">4</button>
+        <button type="button" data-key="5">5</button>
+        <button type="button" data-key="6">6</button>
+        <button type="button" data-key="7">7</button>
+        <button type="button" data-key="8">8</button>
+        <button type="button" data-key="9">9</button>
+        <button type="button" class="key-dash" data-key="-">-</button>
+        <button type="button" data-key="0">0</button>
+        <button type="button" class="key-back" data-key="back" aria-label="Delete">⌫</button>
+      </div>
+      <p class="gate-error" id="gateError" hidden>Oops.. Something went wrong</p>
+    </div>
+  </div>
+
+  <!-- Main Invitation -->
+  <div id="invitation" class="invitation hidden">
+
+    <!-- Cover -->
+    <section class="cover" id="cover">
+      <div class="cover-overlay"></div>
+      <div class="cover-content">
+        <div id="coverStandard">
+          <p class="cover-eyebrow">The Wedding Of</p>
+          <h1 class="cover-couple">
+            <span class="cover-name">Shahrul</span>
+            <span class="cover-amp">&</span>
+            <span class="cover-name">Ain</span>
+          </h1>
+          <p class="cover-date">Friday • 11.09.26</p>
+        </div>
+        <div id="coverInnerCircle" class="hidden">
+          <span class="cover-inner-icon">✦</span>
+          <h1 class="cover-inner-title">Welcome to the Inner Circle</h1>
+          <p class="cover-inner-couple">Shahrul <span class="amp">&</span> Ain</p>
+          <p class="cover-date">Friday • 11.09.26</p>
+        </div>
+        <button type="button" class="cover-open-btn" id="openBtn">
+          <span>Open Invitation</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- Body -->
+    <main class="body" id="body">
+
+      <!-- Hero Names -->
+      <section class="section hero-names">
+        <p class="eyebrow">The Wedding Of</p>
+        <h2 class="couple-title">
+          <span>Shahrul</span>
+          <span class="amp">&</span>
+          <span>Ain</span>
+        </h2>
+        <p class="hero-date">Friday • 11.09.26</p>
+      </section>
+
+      <!-- Invitation Text -->
+      <section class="section invite-text">
+        <p class="greet">With Joy and Gratitude to Almighty God</p>
+        <div class="parents">
+          <p>Robert Bin James</p>
+          <p class="parents-amp">&</p>
+          <p>Elizabeth Binti Mary</p>
+        </div>
+        <p class="invite-line">cordially invite</p>
+        <p class="invite-line">Dato' | Datin | Mr. | Mrs. | Ms.</p>
+        <p class="invite-line" id="invitePurposeLine">to the solemnization of our son and daughter</p>
+        <div class="couple-full">
+          <p>Shahrul Bin Robert</p>
+          <p class="parents-amp">&</p>
+          <p>Ain Binti Elizabeth</p>
+        </div>
+      </section>
+
+      <!-- Solemnization Details -->
+      <section class="section event-details">
+        <div class="detail-card">
+          <h3 class="detail-label">Solemnization</h3>
+          <p class="detail-main">Friday, 11th September 2026</p>
+          <p class="detail-sub">19 Rabiulawal 1448H</p>
+        </div>
+        <div class="detail-card">
+          <h3 class="detail-label">Time</h3>
+          <p class="detail-main">9:00 AM – 12:30 PM</p>
+        </div>
+        <div class="detail-card">
+          <h3 class="detail-label">Venue</h3>
+          <p class="detail-main">PICO SG</p>
+          <p class="detail-sub">Pico Creative Centre,</p>
+          <p class="detail-sub">Singapore 339411</p>
+          <div class="map-links">
+            <a href="https://maps.google.com/?q=Pico+Creative+Centre+Singapore+339411" target="_blank" rel="noopener" class="map-btn">Google Maps</a>
+            <a href="https://waze.com/ul?q=Pico+Creative+Centre+Singapore+339411" target="_blank" rel="noopener" class="map-btn">Waze</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Reception Dinner (full invite only) -->
+      <section class="section event-details reception-only hidden">
+        <div class="detail-card">
+          <h3 class="detail-label">Reception Dinner</h3>
+          <p class="detail-main">Friday, 11th September 2026</p>
+          <p class="detail-sub">19 Rabiulawal 1448H</p>
+        </div>
+        <div class="detail-card">
+          <h3 class="detail-label">Time</h3>
+          <p class="detail-main">5:00 PM – 9:00 PM</p>
+        </div>
+        <div class="detail-card">
+          <h3 class="detail-label">Venue</h3>
+          <p class="detail-main">39 MacTaggart Rd</p>
+          <p class="detail-sub">Singapore 368084</p>
+          <div class="map-links">
+            <a href="https://maps.google.com/?q=39+MacTaggart+Rd+Singapore+368084" target="_blank" rel="noopener" class="map-btn">Google Maps</a>
+            <a href="https://waze.com/ul?q=39+MacTaggart+Rd+Singapore+368084" target="_blank" rel="noopener" class="map-btn">Waze</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Save the Date -->
+      <section class="section save-date">
+        <button type="button" class="btn-primary" id="saveDateBtn">Save The Date</button>
+        <p class="hashtag">#ShahAinBrightLikeADiamond</p>
+      </section>
+
+      <!-- Countdown -->
+      <section class="section countdown-section">
+        <h3 class="section-label">Counting Days</h3>
+        <div class="countdown" id="countdown">
+          <div class="countdown-item">
+            <span class="countdown-num" id="cdDays">00</span>
+            <span class="countdown-unit">Days</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-num" id="cdHours">00</span>
+            <span class="countdown-unit">Hours</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-num" id="cdMinutes">00</span>
+            <span class="countdown-unit">Minutes</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-num" id="cdSeconds">00</span>
+            <span class="countdown-unit">Seconds</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Attendance -->
+      <section class="section attendance">
+        <h3 class="section-label">Attendance</h3>
+        <div class="attendance-stats">
+          <div class="stat attending">
+            <span class="stat-num" id="attendingCount">0</span>
+            <span class="stat-label">Attending</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat not-attending">
+            <span class="stat-num" id="notAttendingCount">0</span>
+            <span class="stat-label">Not Attending</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Wishes -->
+      <section class="section wishes">
+        <h3 class="section-label">Wishes</h3>
+        <div class="wishes-scroll" id="wishesScroll">
+          <!-- populated by JS -->
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Fixed Bottom Action Bar -->
+    <div class="bottom-bar hidden" id="bottomBar">
+      <div class="bottom-bar-inner">
+        <button type="button" class="bottom-btn bottom-btn-primary" id="rsvpBtn">RSVP</button>
+        <button type="button" class="bottom-btn bottom-btn-secondary" id="wishBtn">Write a Message</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- RSVP Modal -->
+  <div class="modal-overlay hidden" id="rsvpModal">
+    <div class="modal modal-rsvp">
+      <button type="button" class="modal-close" data-close="rsvpModal" aria-label="Close">&times;</button>
+      <h3 class="modal-title">RSVP</h3>
+      <p class="rsvp-intro">Celebrating with Shahrul Hairi &amp; Nurul Ain</p>
+      <form id="rsvpForm">
+        <!-- Step 1 -->
+        <div class="rsvp-step" id="rsvpStep1">
+          <label class="form-label" for="rsvpName">What's your name?</label>
+          <input type="text" id="rsvpName" class="form-input" required placeholder="Your full name" autocomplete="name">
+
+          <div id="rsvpFullFields" class="hidden">
+            <label class="form-label">Are you a friend or family of...?</label>
+            <div class="rsvp-option-group" data-field="side">
+              <button type="button" class="rsvp-option" data-value="groom">The honoured Groom 🤵</button>
+              <button type="button" class="rsvp-option" data-value="bride">The sweet Bride 👰</button>
+            </div>
+            <input type="hidden" id="rsvpSide" name="side" value="">
+          </div>
+
+          <label class="form-label">Will you be attending?</label>
+          <div class="rsvp-option-group rsvp-option-stack" data-field="attending">
+            <button type="button" class="rsvp-option" data-value="yes">Absolutely, wouldn't miss it 💍</button>
+            <button type="button" class="rsvp-option" data-value="yes-food">I'll be there (for the food 😏)</button>
+            <button type="button" class="rsvp-option" data-value="no">Regretfully can't make it ☠</button>
+          </div>
+          <input type="hidden" id="rsvpAttending" name="attending" value="">
+
+          <button type="button" class="btn-primary btn-full" id="rsvpContinueBtn">Continue</button>
+        </div>
+
+        <!-- Step 2: Which events (full invite, attending only) -->
+        <div class="rsvp-step hidden" id="rsvpStepEvents">
+          <label class="form-label">What are you attending?</label>
+          <div class="rsvp-option-group rsvp-option-stack" data-field="event">
+            <button type="button" class="rsvp-option" data-value="solemnization-only">Solemnization ONLY 🥵</button>
+            <button type="button" class="rsvp-option" data-value="dinner-only">Dinner ONLY 😳</button>
+            <button type="button" class="rsvp-option" data-value="both">I will attend both! I will reserve an ENTIRE day of my life for you</button>
+          </div>
+          <input type="hidden" id="rsvpEvent" name="event" value="">
+
+          <div class="rsvp-form-actions">
+            <button type="button" class="btn-secondary rsvp-back-btn" data-back="rsvpStep1">Back</button>
+            <button type="button" class="btn-primary" id="rsvpEventsContinueBtn">Continue</button>
+          </div>
+        </div>
+
+        <!-- Step 3: Head count (attending only) -->
+        <div class="rsvp-step hidden" id="rsvpStepPax">
+          <label class="form-label">Please indicate the number of people that will be attending. (Including you!)</label>
+          <div class="rsvp-option-group rsvp-pax-grid" data-field="pax">
+            <button type="button" class="rsvp-option rsvp-pax-option" data-value="1">1</button>
+            <button type="button" class="rsvp-option rsvp-pax-option" data-value="2">2</button>
+            <button type="button" class="rsvp-option rsvp-pax-option" data-value="3">3</button>
+            <button type="button" class="rsvp-option rsvp-pax-option" data-value="4">4</button>
+            <button type="button" class="rsvp-option rsvp-pax-option" data-value="5">5</button>
+          </div>
+          <input type="hidden" id="rsvpPax" name="pax" value="">
+
+          <div class="rsvp-form-actions">
+            <button type="button" class="btn-secondary rsvp-back-btn" id="rsvpPaxBackBtn">Back</button>
+            <button type="button" class="btn-primary hidden" id="rsvpPaxContinueBtn">Continue</button>
+            <button type="submit" class="btn-primary" id="rsvpSubmitBtn">Submit RSVP</button>
+          </div>
+        </div>
+
+        <!-- Step 4: Dinner questions (dinner only or both) -->
+        <div class="rsvp-step hidden" id="rsvpStepDinner1">
+          <label class="form-label">What are you most excited for?</label>
+          <div class="rsvp-option-group rsvp-option-stack" data-field="excited">
+            <button type="button" class="rsvp-option" data-value="food">The food 🍲</button>
+            <button type="button" class="rsvp-option" data-value="couple">The couple ❤️</button>
+            <button type="button" class="rsvp-option" data-value="photos">The photos 📸</button>
+            <button type="button" class="rsvp-option" data-value="vibes">The vibes 🎶</button>
+          </div>
+          <input type="hidden" id="rsvpExcited" name="excited" value="">
+
+          <div class="rsvp-form-actions">
+            <button type="button" class="btn-secondary rsvp-back-btn" data-back="rsvpStepPax">Back</button>
+            <button type="button" class="btn-primary" id="rsvpDinner1ContinueBtn">Continue</button>
+          </div>
+        </div>
+
+        <div class="rsvp-step hidden" id="rsvpStepDinner2">
+          <label class="form-label" for="rsvpSong">🎶 Drop ONE song that would get you grooving!</label>
+          <input type="text" id="rsvpSong" class="form-input" placeholder="Song title &amp; artist">
+
+          <label class="form-label">Would you like to give a speech?</label>
+          <div class="rsvp-option-group rsvp-option-stack" data-field="speech">
+            <button type="button" class="rsvp-option" data-value="yes">Yes, I would be honored</button>
+            <button type="button" class="rsvp-option" data-value="maybe">Maybe, if needed</button>
+            <button type="button" class="rsvp-option" data-value="no">No, I'll support from my seat</button>
+          </div>
+          <input type="hidden" id="rsvpSpeech" name="speech" value="">
+
+          <div class="rsvp-form-actions">
+            <button type="button" class="btn-secondary rsvp-back-btn" data-back="rsvpStepDinner1">Back</button>
+            <button type="button" class="btn-primary" id="rsvpDinner2ContinueBtn">Continue</button>
+          </div>
+        </div>
+
+        <div class="rsvp-step hidden" id="rsvpStepDinner3">
+          <label class="form-label" for="rsvpDinnerIdea">Anything you want to see happen during the dinner? 🎉</label>
+          <input type="text" id="rsvpDinnerIdea" class="form-input" placeholder="Your ideas">
+
+          <label class="form-label" for="rsvpHashtagIdea">Help us think of a wedding hashtag please! 🤍</label>
+          <input type="text" id="rsvpHashtagIdea" class="form-input" placeholder="#YourIdea">
+
+          <label class="form-label">Are you an amazing soul and planning to bring us a gift? 🤣</label>
+          <div class="rsvp-option-group rsvp-option-stack" data-field="gift">
+            <button type="button" class="rsvp-option" data-value="yes">Yes</button>
+            <button type="button" class="rsvp-option" data-value="definitely">Definitely</button>
+            <button type="button" class="rsvp-option" data-value="obviously">Obviously</button>
+            <input type="text" id="rsvpGiftOther" class="form-input rsvp-gift-other" placeholder="??">
+          </div>
+          <input type="hidden" id="rsvpGift" name="gift" value="">
+
+          <div class="rsvp-form-actions">
+            <button type="button" class="btn-secondary rsvp-back-btn" data-back="rsvpStepDinner2">Back</button>
+            <button type="submit" class="btn-primary" id="rsvpDinner3SubmitBtn">Submit RSVP</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Wish Modal -->
+  <div class="modal-overlay hidden" id="wishModal">
+    <div class="modal">
+      <button type="button" class="modal-close" data-close="wishModal" aria-label="Close">&times;</button>
+      <h3 class="modal-title">Write a Message</h3>
+      <form id="wishForm">
+        <label class="form-label" for="wishName">Your Name</label>
+        <input type="text" id="wishName" class="form-input" required placeholder="Enter your name">
+        <label class="form-label" for="wishMessage">Your Wish</label>
+        <textarea id="wishMessage" class="form-textarea" required placeholder="Write your heartfelt message..." rows="4"></textarea>
+        <button type="submit" class="btn-primary btn-full">Send Wish</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Calendar Modal -->
+  <div class="modal-overlay hidden" id="calendarModal">
+    <div class="modal modal-calendar">
+      <button type="button" class="modal-close" data-close="calendarModal" aria-label="Close">&times;</button>
+      <h3 class="modal-title">Save The Date</h3>
+      <p class="modal-subtitle">Choose your calendar app</p>
+      <div class="calendar-options">
+        <a href="#" id="googleCalendarBtn" target="_blank" rel="noopener" class="calendar-btn calendar-btn-google">Add to Google Calendar</a>
+        <p class="calendar-or">or</p>
+        <button type="button" class="calendar-btn calendar-btn-apple" id="appleCalendarBtn">Add to Apple Calendar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast hidden" id="toast"></div>
+
+  <!-- Hidden YouTube player (background music) -->
+  <div class="youtube-player-wrap" aria-hidden="true">
+    <div id="youtubePlayer"></div>
+  </div>
+
+  <button type="button" class="music-toggle hidden" id="musicToggle" aria-label="Play music">
+    <svg class="music-icon music-icon-off" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+      <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+      <line x1="23" y1="9" x2="17" y2="15"/>
+      <line x1="17" y1="9" x2="23" y2="15"/>
+    </svg>
+    <svg class="music-icon music-icon-on" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+      <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+      <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+      <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+    </svg>
+  </button>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

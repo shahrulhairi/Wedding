@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>RSVP Export | Shahrul &amp; Ain</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 1.5rem;
+      font-family: Georgia, "Times New Roman", serif;
+      background: #f4f1ec;
+      color: #2c3e3a;
+    }
+
+    .card {
+      width: min(100%, 420px);
+      padding: 2rem;
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 8px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+    }
+
+    h1 {
+      margin: 0 0 0.35rem;
+      font-size: 1.5rem;
+      font-weight: 400;
+    }
+
+    p {
+      margin: 0 0 1.5rem;
+      color: #66716e;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #66716e;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      border-radius: 4px;
+      font: inherit;
+      background: #faf8f5;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: rgba(0, 0, 0, 0.25);
+    }
+
+    .actions {
+      display: grid;
+      gap: 0.65rem;
+      margin-top: 1.25rem;
+    }
+
+    button {
+      padding: 0.85rem 1rem;
+      border: none;
+      border-radius: 4px;
+      font: inherit;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    button:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+
+    .btn-primary {
+      background: #8b7355;
+      color: #fff;
+    }
+
+    .btn-secondary {
+      background: #ece7df;
+      color: #2c3e3a;
+    }
+
+    .status {
+      min-height: 1.25rem;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #66716e;
+    }
+
+    .status.error {
+      color: #9b3b3b;
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>RSVP Export</h1>
+    <p>Download guest responses as CSV. This page is not linked from the invitation.</p>
+
+    <label for="adminKey">Admin key</label>
+    <input type="password" id="adminKey" autocomplete="current-password" placeholder="Enter your admin key">
+
+    <div class="actions">
+      <button type="button" class="btn-primary" id="downloadAllBtn">Download all RSVPs</button>
+      <button type="button" class="btn-secondary" id="downloadFullBtn">Download full invite only</button>
+      <button type="button" class="btn-secondary" id="downloadSolemnizationBtn">Download solemnization only</button>
+    </div>
+
+    <p class="status" id="status" aria-live="polite"></p>
+  </main>
+
+  <script>
+    const KEY_STORAGE = 'rsvp_admin_key';
+
+    const adminKeyInput = document.getElementById('adminKey');
+    const statusEl = document.getElementById('status');
+    const buttons = [
+      document.getElementById('downloadAllBtn'),
+      document.getElementById('downloadFullBtn'),
+      document.getElementById('downloadSolemnizationBtn')
+    ];
+
+    adminKeyInput.value = sessionStorage.getItem(KEY_STORAGE) || '';
+
+    function setStatus(message, isError) {
+      statusEl.textContent = message;
+      statusEl.classList.toggle('error', Boolean(isError));
+    }
+
+    function setLoading(isLoading) {
+      buttons.forEach((btn) => {
+        btn.disabled = isLoading;
+      });
+    }
+
+    function getFilename(contentDisposition) {
+      const match = /filename="([^"]+)"/i.exec(contentDisposition || '');
+      return match ? match[1] : 'rsvp-export.csv';
+    }
+
+    async function downloadCsv(tier) {
+      const key = adminKeyInput.value.trim();
+      if (!key) {
+        setStatus('Please enter your admin key.', true);
+        adminKeyInput.focus();
+        return;
+      }
+
+      sessionStorage.setItem(KEY_STORAGE, key);
+      setLoading(true);
+      setStatus('Preparing download...');
+
+      try {
+        const query = tier === 'all' ? 'export=csv' : `export=csv&tier=${encodeURIComponent(tier)}`;
+        const res = await fetch(`/.netlify/functions/rsvp?${query}`, {
+          headers: {
+            Authorization: `Bearer ${key}`
+          }
+        });
+
+        if (res.status === 401) {
+          setStatus('Invalid admin key.', true);
+          return;
+        }
+
+        if (!res.ok) {
+          setStatus('Could not download CSV. Try again.', true);
+          return;
+        }
+
+        const blob = await res.blob();
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = getFilename(res.headers.get('Content-Disposition'));
+        link.click();
+        URL.revokeObjectURL(url);
+        setStatus('Download started.');
+      } catch {
+        setStatus('Could not download CSV. Check your connection.', true);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    document.getElementById('downloadAllBtn').addEventListener('click', () => downloadCsv('all'));
+    document.getElementById('downloadFullBtn').addEventListener('click', () => downloadCsv('full'));
+    document.getElementById('downloadSolemnizationBtn').addEventListener('click', () => downloadCsv('solemnization'));
+  </script>
+</body>
+</html>
