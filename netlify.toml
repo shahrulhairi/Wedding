@@ -1,0 +1,6 @@
+# Monorepo: site lives in wedding-invite/
+[build]
+  base = "wedding-invite"
+  command = "npm install"
+  publish = "."
+  functions = "netlify/functions"
